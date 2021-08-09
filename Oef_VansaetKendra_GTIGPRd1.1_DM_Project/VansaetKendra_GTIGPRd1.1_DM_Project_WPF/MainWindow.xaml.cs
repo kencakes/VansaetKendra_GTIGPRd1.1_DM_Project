@@ -27,17 +27,23 @@ namespace VansaetKendra_GTIGPRd1._1_DM_Project_WPF
 
         private void btnGebruikers_Click(object sender, RoutedEventArgs e)
         {
-
+            GebruikerWindow gWindow = new GebruikerWindow();
+            gWindow.Show();
+            this.Close();
         }
 
         private void btnReputatie_Click(object sender, RoutedEventArgs e)
         {
-
+            ReputatieWindow repWindow = new ReputatieWindow();
+            repWindow.Show();
+            this.Close();
         }
 
         private void btnAchievements_Click(object sender, RoutedEventArgs e)
         {
-
+            AchievementWindow achievWindow = new AchievementWindow();
+            achievWindow.Show();
+            this.Close();
         }
     }
 }
