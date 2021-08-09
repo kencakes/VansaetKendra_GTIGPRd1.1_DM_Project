@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31515.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VansaetKendra_GTIGPRd1.1_DM_Project_WPF", "VansaetKendra_GTIGPRd1.1_DM_Project_WPF\VansaetKendra_GTIGPRd1.1_DM_Project_WPF.csproj", "{9C1333A9-E4EF-4E11-BAFD-F4B597FE4DF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VansaetKendra_Gd1.1_DM_Project_DAL", "VansaetKendra_Gd1.1_DM_Project_DAL\VansaetKendra_Gd1.1_DM_Project_DAL.csproj", "{9D31D43F-FB60-4FE0-9C3C-487B4D3DAE3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9C1333A9-E4EF-4E11-BAFD-F4B597FE4DF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C1333A9-E4EF-4E11-BAFD-F4B597FE4DF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C1333A9-E4EF-4E11-BAFD-F4B597FE4DF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D31D43F-FB60-4FE0-9C3C-487B4D3DAE3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D31D43F-FB60-4FE0-9C3C-487B4D3DAE3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D31D43F-FB60-4FE0-9C3C-487B4D3DAE3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D31D43F-FB60-4FE0-9C3C-487B4D3DAE3D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
