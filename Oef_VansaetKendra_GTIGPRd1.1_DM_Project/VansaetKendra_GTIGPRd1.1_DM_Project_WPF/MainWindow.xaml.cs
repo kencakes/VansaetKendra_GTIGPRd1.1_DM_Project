@@ -24,5 +24,20 @@ namespace VansaetKendra_GTIGPRd1._1_DM_Project_WPF
         {
             InitializeComponent();
         }
+
+        private void btnGebruikers_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnReputatie_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAchievements_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

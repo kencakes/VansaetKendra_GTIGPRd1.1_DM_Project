@@ -12,14 +12,14 @@
 
         <!-- Button Gebruiker -->
         <Button x:Name="btnGebruikers" Content="Gebruikers" Margin="5" 
-                FontFamily="Arial" FontWeight="Bold" FontSize="16" Foreground="White" Background="#0A0A0A" Width="150" Height="36" BorderBrush="{x:Null}"/>
+                FontFamily="Arial" FontWeight="Bold" FontSize="16" Foreground="White" Background="#0A0A0A" Width="150" Height="36" BorderBrush="{x:Null}" Click="btnGebruikers_Click"/>
 
         <!-- Button Reputatie -->
         <Button x:Name="btnReputatie" Content="Reputatie" Margin="5" 
-                FontFamily="Arial" FontWeight="Bold" FontSize="16" Foreground="White" Background="#0A0A0A" Width="150" Height="36" BorderBrush="{x:Null}"/>
+                FontFamily="Arial" FontWeight="Bold" FontSize="16" Foreground="White" Background="#0A0A0A" Width="150" Height="36" BorderBrush="{x:Null}" Click="btnReputatie_Click"/>
 
         <!-- Button Achievements -->
         <Button x:Name="btnAchievements" Content="Achievements" Margin="5" 
-                FontFamily="Arial" FontWeight="Bold" FontSize="16" Foreground="White" Background="#0A0A0A" Width="150" Height="36" BorderBrush="{x:Null}"/>
+                FontFamily="Arial" FontWeight="Bold" FontSize="16" Foreground="White" Background="#0A0A0A" Width="150" Height="36" BorderBrush="{x:Null}" Click="btnAchievements_Click"/>
     </StackPanel>
 </Window>
