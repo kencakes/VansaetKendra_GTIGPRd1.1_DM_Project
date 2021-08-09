@@ -55,9 +55,16 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AchievementWindow.xaml.cs">
+      <DependentUpon>AchievementWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ReputatieWindow.xaml.cs">
       <DependentUpon>ReputatieWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="AchievementWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GebruikerWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
