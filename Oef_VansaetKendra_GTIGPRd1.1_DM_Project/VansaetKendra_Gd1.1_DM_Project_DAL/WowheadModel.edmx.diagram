@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2899eb1c069646e8a628c7c04855a7d2" Name="Diagram1">
+        <EntityTypeShape EntityType="WowheadModel.Achievement" Width="1.5" PointX="10.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WowheadModel.Categorie" Width="1.5" PointX="12.375" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WowheadModel.GameVersie" Width="1.5" PointX="12.375" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WowheadModel.Gebruiker" Width="1.5" PointX="5.625" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WowheadModel.GebruikerAchievement" Width="1.5" PointX="7.875" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WowheadModel.GebruikerReputatie" Width="1.5" PointX="3.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WowheadModel.Guild" Width="1.5" PointX="5.625" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WowheadModel.Opmerking" Width="1.5" PointX="7.875" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WowheadModel.Post" Width="1.5" PointX="10.125" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WowheadModel.Reputatie" Width="1.5" PointX="0.875" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="WowheadModel.FK_Achievement_Categorie" ManuallyRouted="false" />
+        <AssociationConnector Association="WowheadModel.FK_GebruikerAchievement_Achievement" ManuallyRouted="false" />
+        <AssociationConnector Association="WowheadModel.FK_Post_GameVersie" ManuallyRouted="false" />
+        <AssociationConnector Association="WowheadModel.FK_Gebruiker_Guild" ManuallyRouted="false" />
+        <AssociationConnector Association="WowheadModel.FK_GebruikerAchievement_Gebruiker" ManuallyRouted="false" />
+        <AssociationConnector Association="WowheadModel.FK_GebruikerReputatie_Gebruiker" ManuallyRouted="false" />
+        <AssociationConnector Association="WowheadModel.FK_Opmerking_Gebruiker" ManuallyRouted="false" ></AssociationConnector>
+        <AssociationConnector Association="WowheadModel.FK_GebruikerReputatie_Reputatie" ManuallyRouted="false" />
+        <AssociationConnector Association="WowheadModel.FK_Opmerking_Post" ManuallyRouted="false" ></AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

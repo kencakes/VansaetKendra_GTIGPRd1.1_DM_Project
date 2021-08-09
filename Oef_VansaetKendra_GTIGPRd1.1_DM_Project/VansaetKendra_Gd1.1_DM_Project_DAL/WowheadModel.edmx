@@ -1,0 +1,676 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WowheadModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Achievement">
+          <Key>
+            <PropertyRef Name="AchievementId" />
+          </Key>
+          <Property Name="AchievementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naam" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Omschrijving" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CategorieId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="CategorieId" />
+          </Key>
+          <Property Name="CategorieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naam" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GameVersie">
+          <Key>
+            <PropertyRef Name="GameVersieId" />
+          </Key>
+          <Property Name="GameVersieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naam" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gebruiker">
+          <Key>
+            <PropertyRef Name="GebruikerId" />
+          </Key>
+          <Property Name="GebruikerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Gebruiksnaam" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Voornaam" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Achternaam" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Toegetreden" Type="date" Nullable="false" />
+          <Property Name="GuildId" Type="int" />
+        </EntityType>
+        <EntityType Name="GebruikerAchievement">
+          <Key>
+            <PropertyRef Name="GebruikerAchievementId" />
+          </Key>
+          <Property Name="GebruikerAchievementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GebruikerId" Type="int" Nullable="false" />
+          <Property Name="AchievementId" Type="int" Nullable="false" />
+          <Property Name="DatumVerdiend" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GebruikerReputatie">
+          <Key>
+            <PropertyRef Name="GebruikerReputatieId" />
+          </Key>
+          <Property Name="GebruikerReputatieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GebruikerId" Type="int" Nullable="false" />
+          <Property Name="ReputatieId" Type="int" Nullable="false" />
+          <Property Name="DatumVerdiend" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guild">
+          <Key>
+            <PropertyRef Name="GuildId" />
+          </Key>
+          <Property Name="GuildId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naam" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DatumAangemaakt" Type="date" Nullable="false" />
+          <Property Name="ServerNaam" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="GuildType" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Partij" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Taal" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ItemLevel" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Regio" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="LevelVereiste" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Opmerking">
+          <Key>
+            <PropertyRef Name="OpmerkingId" />
+          </Key>
+          <Property Name="OpmerkingId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Commentaar" Type="varchar" MaxLength="7500" Nullable="false" />
+          <Property Name="DatumGepost" Type="date" Nullable="false" />
+          <Property Name="PostId" Type="int" Nullable="false" />
+          <Property Name="GebruikerId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Titel" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Tekst" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="Beschrijving" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="DatumGepost" Type="date" Nullable="false" />
+          <Property Name="AuteurId" Type="int" Nullable="false" />
+          <Property Name="GameVersieId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reputatie">
+          <Key>
+            <PropertyRef Name="ReputatieId" />
+          </Key>
+          <Property Name="ReputatieId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Naam" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Punten" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Achievement_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Achievement" Type="Self.Achievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="CategorieId" />
+            </Principal>
+            <Dependent Role="Achievement">
+              <PropertyRef Name="CategorieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gebruiker_Guild">
+          <End Role="Guild" Type="Self.Guild" Multiplicity="0..1" />
+          <End Role="Gebruiker" Type="Self.Gebruiker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guild">
+              <PropertyRef Name="GuildId" />
+            </Principal>
+            <Dependent Role="Gebruiker">
+              <PropertyRef Name="GuildId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GebruikerAchievement_Achievement">
+          <End Role="Achievement" Type="Self.Achievement" Multiplicity="1" />
+          <End Role="GebruikerAchievement" Type="Self.GebruikerAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Achievement">
+              <PropertyRef Name="AchievementId" />
+            </Principal>
+            <Dependent Role="GebruikerAchievement">
+              <PropertyRef Name="AchievementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GebruikerAchievement_Gebruiker">
+          <End Role="Gebruiker" Type="Self.Gebruiker" Multiplicity="1" />
+          <End Role="GebruikerAchievement" Type="Self.GebruikerAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gebruiker">
+              <PropertyRef Name="GebruikerId" />
+            </Principal>
+            <Dependent Role="GebruikerAchievement">
+              <PropertyRef Name="GebruikerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GebruikerReputatie_Gebruiker">
+          <End Role="Gebruiker" Type="Self.Gebruiker" Multiplicity="1" />
+          <End Role="GebruikerReputatie" Type="Self.GebruikerReputatie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gebruiker">
+              <PropertyRef Name="GebruikerId" />
+            </Principal>
+            <Dependent Role="GebruikerReputatie">
+              <PropertyRef Name="GebruikerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GebruikerReputatie_Reputatie">
+          <End Role="Reputatie" Type="Self.Reputatie" Multiplicity="1" />
+          <End Role="GebruikerReputatie" Type="Self.GebruikerReputatie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reputatie">
+              <PropertyRef Name="ReputatieId" />
+            </Principal>
+            <Dependent Role="GebruikerReputatie">
+              <PropertyRef Name="ReputatieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Opmerking_Gebruiker">
+          <End Role="Gebruiker" Type="Self.Gebruiker" Multiplicity="1" />
+          <End Role="Opmerking" Type="Self.Opmerking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gebruiker">
+              <PropertyRef Name="GebruikerId" />
+            </Principal>
+            <Dependent Role="Opmerking">
+              <PropertyRef Name="GebruikerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Opmerking_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Opmerking" Type="Self.Opmerking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="Opmerking">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_GameVersie">
+          <End Role="GameVersie" Type="Self.GameVersie" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameVersie">
+              <PropertyRef Name="GameVersieId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="GameVersieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WowheadModelStoreContainer">
+          <EntitySet Name="Achievement" EntityType="Self.Achievement" Schema="Wowhead" store:Type="Tables" />
+          <EntitySet Name="Categorie" EntityType="Self.Categorie" Schema="Wowhead" store:Type="Tables" />
+          <EntitySet Name="GameVersie" EntityType="Self.GameVersie" Schema="Wowhead" store:Type="Tables" />
+          <EntitySet Name="Gebruiker" EntityType="Self.Gebruiker" Schema="Wowhead" store:Type="Tables" />
+          <EntitySet Name="GebruikerAchievement" EntityType="Self.GebruikerAchievement" Schema="Wowhead" store:Type="Tables" />
+          <EntitySet Name="GebruikerReputatie" EntityType="Self.GebruikerReputatie" Schema="Wowhead" store:Type="Tables" />
+          <EntitySet Name="Guild" EntityType="Self.Guild" Schema="Wowhead" store:Type="Tables" />
+          <EntitySet Name="Opmerking" EntityType="Self.Opmerking" Schema="Wowhead" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="Wowhead" store:Type="Tables" />
+          <EntitySet Name="Reputatie" EntityType="Self.Reputatie" Schema="Wowhead" store:Type="Tables" />
+          <AssociationSet Name="FK_Achievement_Categorie" Association="Self.FK_Achievement_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Achievement" EntitySet="Achievement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gebruiker_Guild" Association="Self.FK_Gebruiker_Guild">
+            <End Role="Guild" EntitySet="Guild" />
+            <End Role="Gebruiker" EntitySet="Gebruiker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GebruikerAchievement_Achievement" Association="Self.FK_GebruikerAchievement_Achievement">
+            <End Role="Achievement" EntitySet="Achievement" />
+            <End Role="GebruikerAchievement" EntitySet="GebruikerAchievement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GebruikerAchievement_Gebruiker" Association="Self.FK_GebruikerAchievement_Gebruiker">
+            <End Role="Gebruiker" EntitySet="Gebruiker" />
+            <End Role="GebruikerAchievement" EntitySet="GebruikerAchievement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GebruikerReputatie_Gebruiker" Association="Self.FK_GebruikerReputatie_Gebruiker">
+            <End Role="Gebruiker" EntitySet="Gebruiker" />
+            <End Role="GebruikerReputatie" EntitySet="GebruikerReputatie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GebruikerReputatie_Reputatie" Association="Self.FK_GebruikerReputatie_Reputatie">
+            <End Role="Reputatie" EntitySet="Reputatie" />
+            <End Role="GebruikerReputatie" EntitySet="GebruikerReputatie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Opmerking_Gebruiker" Association="Self.FK_Opmerking_Gebruiker">
+            <End Role="Gebruiker" EntitySet="Gebruiker" />
+            <End Role="Opmerking" EntitySet="Opmerking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Opmerking_Post" Association="Self.FK_Opmerking_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Opmerking" EntitySet="Opmerking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_GameVersie" Association="Self.FK_Post_GameVersie">
+            <End Role="GameVersie" EntitySet="GameVersie" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WowheadModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Achievement">
+          <Key>
+            <PropertyRef Name="AchievementId" />
+          </Key>
+          <Property Name="AchievementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Omschrijving" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CategorieId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Categorie" Relationship="Self.FK_Achievement_Categorie" FromRole="Achievement" ToRole="Categorie" />
+          <NavigationProperty Name="GebruikersAchievements" Relationship="Self.FK_GebruikerAchievement_Achievement" FromRole="Achievement" ToRole="GebruikerAchievement" />
+        </EntityType>
+        <EntityType Name="Categorie">
+          <Key>
+            <PropertyRef Name="CategorieId" />
+          </Key>
+          <Property Name="CategorieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naam" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Achievements" Relationship="Self.FK_Achievement_Categorie" FromRole="Categorie" ToRole="Achievement" />
+        </EntityType>
+        <EntityType Name="GameVersie">
+          <Key>
+            <PropertyRef Name="GameVersieId" />
+          </Key>
+          <Property Name="GameVersieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naam" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK_Post_GameVersie" FromRole="GameVersie" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="Gebruiker">
+          <Key>
+            <PropertyRef Name="GebruikerId" />
+          </Key>
+          <Property Name="GebruikerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Gebruiksnaam" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Voornaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Achternaam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Toegetreden" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="GuildId" Type="Int32" />
+          <NavigationProperty Name="Guild" Relationship="Self.FK_Gebruiker_Guild" FromRole="Gebruiker" ToRole="Guild" />
+          <NavigationProperty Name="GebruikersAchievements" Relationship="Self.FK_GebruikerAchievement_Gebruiker" FromRole="Gebruiker" ToRole="GebruikerAchievement" />
+          <NavigationProperty Name="GebruikersReputaties" Relationship="Self.FK_GebruikerReputatie_Gebruiker" FromRole="Gebruiker" ToRole="GebruikerReputatie" />
+          <NavigationProperty Name="Opmerkingen" Relationship="Self.FK_Opmerking_Gebruiker" FromRole="Gebruiker" ToRole="Opmerking" />
+        </EntityType>
+        <EntityType Name="GebruikerAchievement">
+          <Key>
+            <PropertyRef Name="GebruikerAchievementId" />
+          </Key>
+          <Property Name="GebruikerAchievementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GebruikerId" Type="Int32" Nullable="false" />
+          <Property Name="AchievementId" Type="Int32" Nullable="false" />
+          <Property Name="DatumVerdiend" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Achievement" Relationship="Self.FK_GebruikerAchievement_Achievement" FromRole="GebruikerAchievement" ToRole="Achievement" />
+          <NavigationProperty Name="Gebruiker" Relationship="Self.FK_GebruikerAchievement_Gebruiker" FromRole="GebruikerAchievement" ToRole="Gebruiker" />
+        </EntityType>
+        <EntityType Name="GebruikerReputatie">
+          <Key>
+            <PropertyRef Name="GebruikerReputatieId" />
+          </Key>
+          <Property Name="GebruikerReputatieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GebruikerId" Type="Int32" Nullable="false" />
+          <Property Name="ReputatieId" Type="Int32" Nullable="false" />
+          <Property Name="DatumVerdiend" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Gebruiker" Relationship="Self.FK_GebruikerReputatie_Gebruiker" FromRole="GebruikerReputatie" ToRole="Gebruiker" />
+          <NavigationProperty Name="Reputatie" Relationship="Self.FK_GebruikerReputatie_Reputatie" FromRole="GebruikerReputatie" ToRole="Reputatie" />
+        </EntityType>
+        <EntityType Name="Guild">
+          <Key>
+            <PropertyRef Name="GuildId" />
+          </Key>
+          <Property Name="GuildId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naam" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DatumAangemaakt" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ServerNaam" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="GuildType" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Partij" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Taal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ItemLevel" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Regio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LevelVereiste" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Gebruikers" Relationship="Self.FK_Gebruiker_Guild" FromRole="Guild" ToRole="Gebruiker" />
+        </EntityType>
+        <EntityType Name="Opmerking">
+          <Key>
+            <PropertyRef Name="OpmerkingId" />
+          </Key>
+          <Property Name="OpmerkingId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Commentaar" Type="String" MaxLength="7500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DatumGepost" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <Property Name="GebruikerId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gebruiker" Relationship="Self.FK_Opmerking_Gebruiker" FromRole="Opmerking" ToRole="Gebruiker" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Opmerking_Post" FromRole="Opmerking" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostId" />
+          </Key>
+          <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Titel" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Tekst" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Beschrijving" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DatumGepost" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="AuteurId" Type="Int32" Nullable="false" />
+          <Property Name="GameVersieId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GameVersie" Relationship="Self.FK_Post_GameVersie" FromRole="Post" ToRole="GameVersie" />
+          <NavigationProperty Name="Opmerkingen" Relationship="Self.FK_Opmerking_Post" FromRole="Post" ToRole="Opmerking" />
+        </EntityType>
+        <EntityType Name="Reputatie">
+          <Key>
+            <PropertyRef Name="ReputatieId" />
+          </Key>
+          <Property Name="ReputatieId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naam" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Punten" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GebruikersReputaties" Relationship="Self.FK_GebruikerReputatie_Reputatie" FromRole="Reputatie" ToRole="GebruikerReputatie" />
+        </EntityType>
+        <Association Name="FK_Achievement_Categorie">
+          <End Role="Categorie" Type="Self.Categorie" Multiplicity="1" />
+          <End Role="Achievement" Type="Self.Achievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categorie">
+              <PropertyRef Name="CategorieId" />
+            </Principal>
+            <Dependent Role="Achievement">
+              <PropertyRef Name="CategorieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GebruikerAchievement_Achievement">
+          <End Role="Achievement" Type="Self.Achievement" Multiplicity="1" />
+          <End Role="GebruikerAchievement" Type="Self.GebruikerAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Achievement">
+              <PropertyRef Name="AchievementId" />
+            </Principal>
+            <Dependent Role="GebruikerAchievement">
+              <PropertyRef Name="AchievementId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_GameVersie">
+          <End Role="GameVersie" Type="Self.GameVersie" Multiplicity="1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GameVersie">
+              <PropertyRef Name="GameVersieId" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="GameVersieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gebruiker_Guild">
+          <End Role="Guild" Type="Self.Guild" Multiplicity="0..1" />
+          <End Role="Gebruiker" Type="Self.Gebruiker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guild">
+              <PropertyRef Name="GuildId" />
+            </Principal>
+            <Dependent Role="Gebruiker">
+              <PropertyRef Name="GuildId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GebruikerAchievement_Gebruiker">
+          <End Role="Gebruiker" Type="Self.Gebruiker" Multiplicity="1" />
+          <End Role="GebruikerAchievement" Type="Self.GebruikerAchievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gebruiker">
+              <PropertyRef Name="GebruikerId" />
+            </Principal>
+            <Dependent Role="GebruikerAchievement">
+              <PropertyRef Name="GebruikerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GebruikerReputatie_Gebruiker">
+          <End Role="Gebruiker" Type="Self.Gebruiker" Multiplicity="1" />
+          <End Role="GebruikerReputatie" Type="Self.GebruikerReputatie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gebruiker">
+              <PropertyRef Name="GebruikerId" />
+            </Principal>
+            <Dependent Role="GebruikerReputatie">
+              <PropertyRef Name="GebruikerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Opmerking_Gebruiker">
+          <End Role="Gebruiker" Type="Self.Gebruiker" Multiplicity="1" />
+          <End Role="Opmerking" Type="Self.Opmerking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gebruiker">
+              <PropertyRef Name="GebruikerId" />
+            </Principal>
+            <Dependent Role="Opmerking">
+              <PropertyRef Name="GebruikerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GebruikerReputatie_Reputatie">
+          <End Role="Reputatie" Type="Self.Reputatie" Multiplicity="1" />
+          <End Role="GebruikerReputatie" Type="Self.GebruikerReputatie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reputatie">
+              <PropertyRef Name="ReputatieId" />
+            </Principal>
+            <Dependent Role="GebruikerReputatie">
+              <PropertyRef Name="ReputatieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Opmerking_Post">
+          <End Role="Post" Type="Self.Post" Multiplicity="1" />
+          <End Role="Opmerking" Type="Self.Opmerking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="Opmerking">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WowheadEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Achievement" EntityType="Self.Achievement" />
+          <EntitySet Name="Categorie" EntityType="Self.Categorie" />
+          <EntitySet Name="GameVersie" EntityType="Self.GameVersie" />
+          <EntitySet Name="Gebruiker" EntityType="Self.Gebruiker" />
+          <EntitySet Name="GebruikerAchievement" EntityType="Self.GebruikerAchievement" />
+          <EntitySet Name="GebruikerReputatie" EntityType="Self.GebruikerReputatie" />
+          <EntitySet Name="Guild" EntityType="Self.Guild" />
+          <EntitySet Name="Opmerking" EntityType="Self.Opmerking" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Reputatie" EntityType="Self.Reputatie" />
+          <AssociationSet Name="FK_Achievement_Categorie" Association="Self.FK_Achievement_Categorie">
+            <End Role="Categorie" EntitySet="Categorie" />
+            <End Role="Achievement" EntitySet="Achievement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GebruikerAchievement_Achievement" Association="Self.FK_GebruikerAchievement_Achievement">
+            <End Role="Achievement" EntitySet="Achievement" />
+            <End Role="GebruikerAchievement" EntitySet="GebruikerAchievement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_GameVersie" Association="Self.FK_Post_GameVersie">
+            <End Role="GameVersie" EntitySet="GameVersie" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gebruiker_Guild" Association="Self.FK_Gebruiker_Guild">
+            <End Role="Guild" EntitySet="Guild" />
+            <End Role="Gebruiker" EntitySet="Gebruiker" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GebruikerAchievement_Gebruiker" Association="Self.FK_GebruikerAchievement_Gebruiker">
+            <End Role="Gebruiker" EntitySet="Gebruiker" />
+            <End Role="GebruikerAchievement" EntitySet="GebruikerAchievement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GebruikerReputatie_Gebruiker" Association="Self.FK_GebruikerReputatie_Gebruiker">
+            <End Role="Gebruiker" EntitySet="Gebruiker" />
+            <End Role="GebruikerReputatie" EntitySet="GebruikerReputatie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Opmerking_Gebruiker" Association="Self.FK_Opmerking_Gebruiker">
+            <End Role="Gebruiker" EntitySet="Gebruiker" />
+            <End Role="Opmerking" EntitySet="Opmerking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GebruikerReputatie_Reputatie" Association="Self.FK_GebruikerReputatie_Reputatie">
+            <End Role="Reputatie" EntitySet="Reputatie" />
+            <End Role="GebruikerReputatie" EntitySet="GebruikerReputatie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Opmerking_Post" Association="Self.FK_Opmerking_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Opmerking" EntitySet="Opmerking" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WowheadModelStoreContainer" CdmEntityContainer="WowheadEntities">
+          <EntitySetMapping Name="Achievement">
+            <EntityTypeMapping TypeName="WowheadModel.Achievement">
+              <MappingFragment StoreEntitySet="Achievement">
+                <ScalarProperty Name="AchievementId" ColumnName="AchievementId" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+                <ScalarProperty Name="Omschrijving" ColumnName="Omschrijving" />
+                <ScalarProperty Name="CategorieId" ColumnName="CategorieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categorie">
+            <EntityTypeMapping TypeName="WowheadModel.Categorie">
+              <MappingFragment StoreEntitySet="Categorie">
+                <ScalarProperty Name="CategorieId" ColumnName="CategorieId" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GameVersie">
+            <EntityTypeMapping TypeName="WowheadModel.GameVersie">
+              <MappingFragment StoreEntitySet="GameVersie">
+                <ScalarProperty Name="GameVersieId" ColumnName="GameVersieId" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gebruiker">
+            <EntityTypeMapping TypeName="WowheadModel.Gebruiker">
+              <MappingFragment StoreEntitySet="Gebruiker">
+                <ScalarProperty Name="GebruikerId" ColumnName="GebruikerId" />
+                <ScalarProperty Name="Gebruiksnaam" ColumnName="Gebruiksnaam" />
+                <ScalarProperty Name="Voornaam" ColumnName="Voornaam" />
+                <ScalarProperty Name="Achternaam" ColumnName="Achternaam" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Toegetreden" ColumnName="Toegetreden" />
+                <ScalarProperty Name="GuildId" ColumnName="GuildId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GebruikerAchievement">
+            <EntityTypeMapping TypeName="WowheadModel.GebruikerAchievement">
+              <MappingFragment StoreEntitySet="GebruikerAchievement">
+                <ScalarProperty Name="GebruikerAchievementId" ColumnName="GebruikerAchievementId" />
+                <ScalarProperty Name="GebruikerId" ColumnName="GebruikerId" />
+                <ScalarProperty Name="AchievementId" ColumnName="AchievementId" />
+                <ScalarProperty Name="DatumVerdiend" ColumnName="DatumVerdiend" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GebruikerReputatie">
+            <EntityTypeMapping TypeName="WowheadModel.GebruikerReputatie">
+              <MappingFragment StoreEntitySet="GebruikerReputatie">
+                <ScalarProperty Name="GebruikerReputatieId" ColumnName="GebruikerReputatieId" />
+                <ScalarProperty Name="GebruikerId" ColumnName="GebruikerId" />
+                <ScalarProperty Name="ReputatieId" ColumnName="ReputatieId" />
+                <ScalarProperty Name="DatumVerdiend" ColumnName="DatumVerdiend" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guild">
+            <EntityTypeMapping TypeName="WowheadModel.Guild">
+              <MappingFragment StoreEntitySet="Guild">
+                <ScalarProperty Name="GuildId" ColumnName="GuildId" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+                <ScalarProperty Name="DatumAangemaakt" ColumnName="DatumAangemaakt" />
+                <ScalarProperty Name="ServerNaam" ColumnName="ServerNaam" />
+                <ScalarProperty Name="GuildType" ColumnName="GuildType" />
+                <ScalarProperty Name="Partij" ColumnName="Partij" />
+                <ScalarProperty Name="Taal" ColumnName="Taal" />
+                <ScalarProperty Name="ItemLevel" ColumnName="ItemLevel" />
+                <ScalarProperty Name="Regio" ColumnName="Regio" />
+                <ScalarProperty Name="LevelVereiste" ColumnName="LevelVereiste" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Opmerking">
+            <EntityTypeMapping TypeName="WowheadModel.Opmerking">
+              <MappingFragment StoreEntitySet="Opmerking">
+                <ScalarProperty Name="OpmerkingId" ColumnName="OpmerkingId" />
+                <ScalarProperty Name="Commentaar" ColumnName="Commentaar" />
+                <ScalarProperty Name="DatumGepost" ColumnName="DatumGepost" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="GebruikerId" ColumnName="GebruikerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="WowheadModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="Titel" ColumnName="Titel" />
+                <ScalarProperty Name="Tekst" ColumnName="Tekst" />
+                <ScalarProperty Name="Beschrijving" ColumnName="Beschrijving" />
+                <ScalarProperty Name="DatumGepost" ColumnName="DatumGepost" />
+                <ScalarProperty Name="AuteurId" ColumnName="AuteurId" />
+                <ScalarProperty Name="GameVersieId" ColumnName="GameVersieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reputatie">
+            <EntityTypeMapping TypeName="WowheadModel.Reputatie">
+              <MappingFragment StoreEntitySet="Reputatie">
+                <ScalarProperty Name="ReputatieId" ColumnName="ReputatieId" />
+                <ScalarProperty Name="Naam" ColumnName="Naam" />
+                <ScalarProperty Name="Punten" ColumnName="Punten" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
