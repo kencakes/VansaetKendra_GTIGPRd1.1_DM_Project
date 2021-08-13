@@ -23,5 +23,35 @@ namespace VansaetKendra_GTIGPRd1._1_DM_Project_WPF
         {
             InitializeComponent();
         }
+
+        private void datagridGebruikers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnVerwijderen_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnToevoegen_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnOpslaan_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnAnnuleren_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
