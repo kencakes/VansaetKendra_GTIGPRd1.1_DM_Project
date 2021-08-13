@@ -97,5 +97,71 @@ namespace VansaetKendra_Gd1._1_DM_Project_DAL
                     .ToList();
             }
         }
+
+        // DatabaseOperations ReputatieWindow
+        // Ophalen records Reputatie
+        public static List<Reputatie> OphalenReputatie()
+        {
+            using(WowheadEntities entities = new WowheadEntities())
+            {
+                return entities.Reputaties
+                    .OrderBy(x => x.Naam)
+                    .ToList();
+            }
+        }
+
+        // Verwijderen reputatie
+        public static int VerwijderenReputatie(Reputatie reputatie)
+        {
+            try
+            {
+                using (WowheadEntities entities = new WowheadEntities())
+                {
+                    entities.Entry(reputatie).State = EntityState.Deleted; // Entityset status Deleted
+                    return entities.SaveChanges(); // Doorvoeren wijzigingen
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
+        // Aanpassen reputatie
+        public static int AanpassenReputatie(Reputatie reputatie)
+        {
+            try
+            {
+                using (WowheadEntities entities = new WowheadEntities())
+                {
+                    entities.Entry(reputatie).State = EntityState.Modified; // Entityset status Modified
+                    return entities.SaveChanges(); // Doorvoeren wijzigingen
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
+        // Toevoegen Reputatie
+        public static int ToevoegenReputatie(Reputatie reputatie)
+        {
+            try
+            {
+                using (WowheadEntities entities = new WowheadEntities())
+                {
+                    entities.Reputaties.Add(reputatie); // Entityset status Added
+                    return entities.SaveChanges(); // Doorvoeren wijzigingen
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
     }
 }
