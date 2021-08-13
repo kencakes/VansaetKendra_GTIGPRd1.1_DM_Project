@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="Partials\Achievement.cs" />
     <Compile Include="Partials\Categorie.cs" />
+    <Compile Include="Partials\Reputatie.cs" />
     <Compile Include="Post.cs">
       <DependentUpon>WowheadModel.tt</DependentUpon>
     </Compile>

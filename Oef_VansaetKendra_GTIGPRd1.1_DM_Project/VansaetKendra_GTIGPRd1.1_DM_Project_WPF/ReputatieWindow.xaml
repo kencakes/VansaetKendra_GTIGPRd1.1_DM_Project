@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VansaetKendra_GTIGPRd1._1_DM_Project_WPF"
         mc:Ignorable="d"
-        Title="ReputatieWindow" Height="719" Width="800">
+        Title="ReputatieWindow" Height="719" Width="800" Loaded="Window_Loaded">
     <Grid>
         <!-- Aanmaken van rijen -->
         <Grid.RowDefinitions>
@@ -23,7 +23,7 @@
         </Button>
 
         <!-- Aanmaken van DataGrid -->
-        <DataGrid x:Name="datagridGebruikers" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.ColumnSpan="3" Margin="5" FontSize="15" SelectionChanged="datagridGebruikers_SelectionChanged">
+        <DataGrid x:Name="datagridReputatie" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.ColumnSpan="3" Margin="5" FontSize="15" SelectionChanged="datagridGebruikers_SelectionChanged">
 
             <!-- Font Color / Style of Column Headings -->
             <DataGrid.Resources>
@@ -64,7 +64,7 @@
                 Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Click="btnToevoegen_Click"/>
 
             <!-- Aanmaken button Opslaan -->
-            <Button x:Name="btnOpslaan" Content="Toevoegen" Margin="0,7,5,8" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
+            <Button x:Name="btnOpslaan" Content="Opslaan" Margin="0,7,5,8" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
                 Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Click="btnOpslaan_Click"/>
 
             <!-- Aanmaken button Annuleren -->
