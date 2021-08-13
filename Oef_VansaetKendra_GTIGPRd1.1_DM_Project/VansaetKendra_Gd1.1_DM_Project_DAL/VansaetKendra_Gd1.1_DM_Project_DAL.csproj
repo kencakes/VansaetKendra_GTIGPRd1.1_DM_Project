@@ -56,6 +56,8 @@
     <Compile Include="Categorie.cs">
       <DependentUpon>WowheadModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseOperations.cs" />
+    <Compile Include="FileOperations.cs" />
     <Compile Include="GameVersie.cs">
       <DependentUpon>WowheadModel.tt</DependentUpon>
     </Compile>
@@ -74,6 +76,8 @@
     <Compile Include="Opmerking.cs">
       <DependentUpon>WowheadModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Partials\Achievement.cs" />
+    <Compile Include="Partials\Categorie.cs" />
     <Compile Include="Post.cs">
       <DependentUpon>WowheadModel.tt</DependentUpon>
     </Compile>
@@ -122,6 +126,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VansaetKendra_Gd1.1_DM_Project_Models\VansaetKendra_Gd1.1_DM_Project_Models.csproj">
+      <Project>{f1b981bc-d95e-4d34-9ce2-1a157e6a523e}</Project>
+      <Name>VansaetKendra_Gd1.1_DM_Project_Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
