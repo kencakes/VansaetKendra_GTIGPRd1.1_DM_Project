@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VansaetKendra_GTIGPRd1.1_DM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VansaetKendra_Gd1.1_DM_Project_DAL", "VansaetKendra_Gd1.1_DM_Project_DAL\VansaetKendra_Gd1.1_DM_Project_DAL.csproj", "{9D31D43F-FB60-4FE0-9C3C-487B4D3DAE3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VansaetKendra_Gd1.1_DM_Project_Models", "VansaetKendra_Gd1.1_DM_Project_Models\VansaetKendra_Gd1.1_DM_Project_Models.csproj", "{F1B981BC-D95E-4D34-9CE2-1A157E6A523E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9D31D43F-FB60-4FE0-9C3C-487B4D3DAE3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D31D43F-FB60-4FE0-9C3C-487B4D3DAE3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D31D43F-FB60-4FE0-9C3C-487B4D3DAE3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1B981BC-D95E-4D34-9CE2-1A157E6A523E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1B981BC-D95E-4D34-9CE2-1A157E6A523E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1B981BC-D95E-4D34-9CE2-1A157E6A523E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1B981BC-D95E-4D34-9CE2-1A157E6A523E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
