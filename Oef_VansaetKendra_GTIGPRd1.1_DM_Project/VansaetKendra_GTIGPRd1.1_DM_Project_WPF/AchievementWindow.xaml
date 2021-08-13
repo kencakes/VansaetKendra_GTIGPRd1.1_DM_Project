@@ -13,7 +13,7 @@
         </Button>
 
         <!-- Aanmaken van DataGrid -->
-        <DataGrid x:Name="datagridGebruikers" AutoGenerateColumns="True" IsReadOnly="True" Grid.Row="1" Grid.ColumnSpan="3" Margin="5" FontSize="15">
+        <DataGrid x:Name="datagridAchievements" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.ColumnSpan="3" Margin="5" FontSize="15" SelectionChanged="datagridAchievements_SelectionChanged">
 
             <!-- Font Color / Style of Column Headings -->
             <DataGrid.Resources>
@@ -36,30 +36,30 @@
         <!-- Lijn Opties -->
         <Separator Name="MySeparator" Height="9" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Black" Grid.Row="2" Grid.ColumnSpan="3" Margin="6,0,6,6"/>
 
-        <!-- Aanmaken label en combobox Naam -->
+        <!-- Aanmaken label en textbox Naam -->
         <Label x:Name="lblNaam" Content="Naam" Grid.Row="3" Grid.Column="0" FontWeight="Bold" FontSize="14" Margin="1,1,1,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtNaam" Grid.Row="3" Grid.Column="0" Height="30" Margin="5,0,5,5" VerticalAlignment="Bottom"/>
 
-        <!-- Aanmaken label en combobox Beschrijving -->
+        <!-- Aanmaken label en textbox Beschrijving -->
         <Label x:Name="lblBeschrijving" Content="Beschrijving" Grid.Row="4" Grid.Column="0" FontWeight="Bold" FontSize="14" Margin="1,1,1,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtBeschrijving" Grid.Row="4" Grid.Column="0" Height="30" Margin="5,0,5,5" Grid.ColumnSpan="3" VerticalAlignment="Bottom"/>
 
         <StackPanel Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" Orientation="Horizontal">
             <!-- Aanmaken button Verwijderen -->
             <Button x:Name="btnVerwijderen" Content="Verwijderen" Margin="0,7,5,8"  HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
-                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
+                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Click="btnVerwijderen_Click"/>
 
             <!-- Aanmaken button Toevoegen -->
             <Button x:Name="btnToevoegen" Content="Toevoegen" Margin="0,7,5,8"  HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
-                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
+                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Click="btnToevoegen_Click"/>
 
             <!-- Aanmaken button Opslaan -->
             <Button x:Name="btnOpslaan" Content="Opslaan" Margin="0,7,5,8"  HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
-                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
+                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Click="btnOpslaan_Click"/>
             
             <!-- Aanmaken button Annuleren -->
             <Button x:Name="btnAnnuleren" Content="Annuleren" Margin="0,7,5,8"  HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
-                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
+                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Click="btnAnnuleren_Click"/>
 
         </StackPanel>
     </StackPanel>
