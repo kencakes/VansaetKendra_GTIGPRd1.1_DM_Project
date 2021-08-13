@@ -128,5 +128,15 @@
     <Resource Include="images\minus.png" />
     <Resource Include="images\shuttle.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VansaetKendra_Gd1.1_DM_Project_DAL\VansaetKendra_Gd1.1_DM_Project_DAL.csproj">
+      <Project>{9d31d43f-fb60-4fe0-9c3c-487b4d3dae3d}</Project>
+      <Name>VansaetKendra_Gd1.1_DM_Project_DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VansaetKendra_Gd1.1_DM_Project_Models\VansaetKendra_Gd1.1_DM_Project_Models.csproj">
+      <Project>{f1b981bc-d95e-4d34-9ce2-1a157e6a523e}</Project>
+      <Name>VansaetKendra_Gd1.1_DM_Project_Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

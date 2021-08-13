@@ -25,15 +25,15 @@ namespace VansaetKendra_Gd1._1_DM_Project_DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Achievement> Achievement { get; set; }
-        public virtual DbSet<Categorie> Categorie { get; set; }
-        public virtual DbSet<GameVersie> GameVersie { get; set; }
-        public virtual DbSet<Gebruiker> Gebruiker { get; set; }
-        public virtual DbSet<GebruikerAchievement> GebruikerAchievement { get; set; }
-        public virtual DbSet<GebruikerReputatie> GebruikerReputatie { get; set; }
-        public virtual DbSet<Guild> Guild { get; set; }
-        public virtual DbSet<Opmerking> Opmerking { get; set; }
-        public virtual DbSet<Post> Post { get; set; }
-        public virtual DbSet<Reputatie> Reputatie { get; set; }
+        public virtual DbSet<Achievement> Achievements { get; set; }
+        public virtual DbSet<Categorie> Categories { get; set; }
+        public virtual DbSet<GameVersie> GamesVersies { get; set; }
+        public virtual DbSet<Gebruiker> Gebruikers { get; set; }
+        public virtual DbSet<GebruikerAchievement> GebruikersAchievements { get; set; }
+        public virtual DbSet<GebruikerReputatie> GebruikersReputaties { get; set; }
+        public virtual DbSet<Guild> Guilds { get; set; }
+        public virtual DbSet<Opmerking> Opmerkingen { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<Reputatie> Reputaties { get; set; }
     }
 }
