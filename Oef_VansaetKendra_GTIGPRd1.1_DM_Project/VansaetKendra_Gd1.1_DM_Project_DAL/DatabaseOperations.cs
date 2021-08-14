@@ -228,5 +228,17 @@ namespace VansaetKendra_Gd1._1_DM_Project_DAL
             }
         }
 
+        // Zoekt op ingegeve naam in de gebruikerslijst, sorteert op gebruiksnaam 
+        public static List<Gebruiker>OphalenGebruikerViaGebruiksaam(string gebruiksnaam)
+        {
+            using(WowheadEntities entities = new WowheadEntities())
+            {
+                return entities.Gebruikers
+                    .Where(x => x.Gebruiksnaam.Contains(gebruiksnaam))
+                    .OrderBy(x => x.Gebruiksnaam)
+                    .ToList();
+            }
+        }
+
     }
 }

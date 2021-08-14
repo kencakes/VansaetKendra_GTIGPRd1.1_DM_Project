@@ -181,5 +181,10 @@ namespace VansaetKendra_GTIGPRd1._1_DM_Project_WPF
             }
             return "";
         }
+
+        private void btnZoeken_Click(object sender, RoutedEventArgs e)
+        {
+            datagridGebruikers.ItemsSource = DatabaseOperations.OphalenGebruikerViaGebruiksaam(txtZoeken.Text);
+        }
     }
 }
