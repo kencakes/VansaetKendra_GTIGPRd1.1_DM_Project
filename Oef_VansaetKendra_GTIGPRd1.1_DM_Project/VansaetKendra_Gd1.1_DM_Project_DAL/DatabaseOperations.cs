@@ -163,5 +163,70 @@ namespace VansaetKendra_Gd1._1_DM_Project_DAL
                 return 0;
             }
         }
+
+        // DatabaseOperations GebruikerWindow
+        public static List<Gebruiker> OphalenGebruikers()
+        {
+            using(WowheadEntities entities = new WowheadEntities())
+            {
+                return entities.Gebruikers
+                    .ToList();
+            }
+        }
+
+        // Verwijderen gebruiker
+        public static int VerwijderenGebruiker(Gebruiker gebruiker)
+        {
+            try
+            {
+                using (WowheadEntities entities = new WowheadEntities())
+                {
+                    entities.Entry(gebruiker).State = EntityState.Deleted; // Entityset status Deleted
+                    return entities.SaveChanges(); // Doorvoeren wijzigingen
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
+        // Aanpassen gebruiker
+        public static int AanpassenGebruiker(Gebruiker gebruiker)
+        {
+            try
+            {
+                using (WowheadEntities entities = new WowheadEntities())
+                {
+                    entities.Entry(gebruiker).State = EntityState.Modified; // Entityset status Modified
+                    return entities.SaveChanges(); // Doorvoeren wijzigingen
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
+        // Toevoegen gebruiker
+        public static int ToevoegenGebruiker(Gebruiker gebruiker)
+        {
+            try
+            {
+                using(WowheadEntities entities = new WowheadEntities())
+                {
+                    entities.Gebruikers.Add(gebruiker);
+                    return entities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.FoutLoggen(ex);
+                return 0;
+            }
+        }
+
     }
 }
