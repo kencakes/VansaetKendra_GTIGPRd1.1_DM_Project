@@ -125,7 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="images\arrow.png" />
-    <Resource Include="images\minus.png" />
     <Resource Include="images\shuttle.png" />
   </ItemGroup>
   <ItemGroup>

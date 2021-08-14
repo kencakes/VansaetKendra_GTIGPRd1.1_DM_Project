@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VansaetKendra_GTIGPRd1._1_DM_Project_WPF"
         mc:Ignorable="d"
-        Title="GebruikerWindow" Height="719" Width="800">
+        Title="GebruikerWindow" Height="719" Width="820" Loaded="Window_Loaded">
     <Grid>
         <!-- Aantal kolommen toevoegen -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="227"></ColumnDefinition>
-            <ColumnDefinition Width="557*"></ColumnDefinition>
-            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="266"></ColumnDefinition>
+            <ColumnDefinition Width="266"></ColumnDefinition>
+            <ColumnDefinition Width="268"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <!-- Aantal rijen toevoegen -->
@@ -26,7 +26,7 @@
         </Grid.RowDefinitions>
 
         <!-- Aanmaken van DataGrid -->
-        <DataGrid x:Name="datagridGebruikers" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.ColumnSpan="3" Margin="5" FontSize="15">
+        <DataGrid x:Name="datagridGebruikers" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="1" Grid.ColumnSpan="3" Margin="5,5,3.296,5" FontSize="15" SelectionChanged="datagridGebruikers_SelectionChanged">
 
             <!-- Font Color / Style of Column Headings -->
             <DataGrid.Resources>
@@ -38,45 +38,58 @@
             </DataGrid.Resources>
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Naam" Width="150"/>
-                <DataGridTextColumn Header="Achievements" Width="150"/>
-                <DataGridTextColumn Header="Reputatie" Width="150"/>
-                <DataGridTextColumn Header="Opmerkingen" Width="150"/>
-                <DataGridTextColumn Header="Antwoorden" Width="150"/>
+                <DataGridTextColumn Binding="{Binding Gebruiksnaam}" Header="Gebruiksnaam" Width="150"/>
+                <DataGridTextColumn Binding="{Binding Voornaam}" Header="Voornaam" Width="150"/>
+                <DataGridTextColumn Binding="{Binding Achternaam}" Header="Achternaam" Width="150"/>
+                <DataGridTextColumn Binding="{Binding Email}" Header="Email" Width="150"/>
+                <DataGridTextColumn Binding="{Binding Toegetreden}" Header="Toegetreden" Width="150"/>
             </DataGrid.Columns>
         </DataGrid>
 
         <!-- Aanmaken button om terug te gaan -->
-        <Button Background="{x:Null}" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0">
+        <Button x:Name="btnTerug" Background="{x:Null}" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" BorderBrush="{x:Null}" Click="btnTerug_Click">
             <Image Source="images/arrow.png" Height="28" Width="28" Margin="5"></Image>
-        </Button>
-
-        <!-- Aanmaken button verwijderen -->
-        <Button Background="{x:Null}" HorizontalAlignment="Right" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2">
-            <Image Source="images/minus.png" Height="28" Width="28" Margin="5"></Image>
         </Button>
 
         <!-- Aanmaken label opties -->
         <Label x:Name="lblOpties" Content="Opties" Grid.Row="2" Grid.Column="0" FontWeight="Bold" FontSize="14" Margin="1"/>
 
         <!-- Lijn Opties -->
-        <Separator Name="MySeparator" Height="9" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Black" Grid.Row="2" Grid.ColumnSpan="3" Margin="6,0,6,6"/>
+        <Separator Name="MySeparator" Height="9" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Black" Grid.Row="2" Grid.ColumnSpan="3" Margin="6,0,4.296,6"/>
 
-        <!-- Aanmaken label en combobox Naam -->
-        <Label x:Name="lblNaam" Content="Naam" Grid.Row="3" Grid.Column="0" FontWeight="Bold" FontSize="14" Margin="1,1,1,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbNaam" Grid.Row="3" Grid.Column="0" Height="30" Margin="5,0,5,5" VerticalAlignment="Bottom"/>
+        <!-- Aanmaken label en textbox Gebruiksnaam -->
+        <Label x:Name="lblGebruiksnaam" Content="Gebruiksnaam" Grid.Row="3" Grid.Column="0" FontWeight="Bold" FontSize="14"  VerticalAlignment="Top"/>
+        <TextBox x:Name="txtGebruiksnaam" Grid.Row="3" Grid.Column="0" Height="30" Margin="5,0,5,5" VerticalAlignment="Bottom"/>
 
-        <!-- Aanmaken label en combobox Achievement -->
-        <Label x:Name="lblAchievement" Content="Achievement" Grid.Row="4" Grid.Column="0" FontWeight="Bold" FontSize="14" Margin="1,1,1,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbAchievement" Grid.Row="4" Grid.Column="0" Height="30" Margin="5,0,5,5" Grid.ColumnSpan="3" VerticalAlignment="Bottom"/>
+        <!-- Aanmaken label en textbox Voornaam -->
+        <Label x:Name="lblVoornaam" Content="Voornaam" Grid.Row="3" Grid.Column="1" FontWeight="Bold" FontSize="14"  VerticalAlignment="Top"/>
+        <TextBox x:Name="txtVoornaam" Grid.Row="3" Grid.Column="1" Height="30" Margin="5,0,5,5" VerticalAlignment="Bottom"/>
 
-        <!-- Aanmaken label en combobox Reputatie -->
-        <Label x:Name="lblReputatie" Content="Reputatie" Grid.Row="5" Grid.Column="0" FontWeight="Bold" FontSize="14" Margin="1,1,1,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbReputatie" Grid.Row="5" Grid.Column="0" Height="30" Margin="5,0,5,5" Grid.ColumnSpan="3" VerticalAlignment="Bottom"/>
+        <!-- Aanmaken label en textbox Achternaam -->
+        <Label x:Name="lblAchternaam" Content="Achternaam" Grid.Row="3" Grid.Column="2" FontWeight="Bold" FontSize="14" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="txtAchternaam" Grid.Row="3" Grid.Column="2" Height="30" Margin="5,0 5,5" VerticalAlignment="Bottom"/>
 
-        <!-- Aanmaken button Toevoegen -->
-        <Button x:Name="btnToevoegen" Content="Toevoegen" Margin="0,7,5,8" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
-                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Grid.ColumnSpan="2"/>
+        <!-- Aanmaken label en textbox Email -->
+        <Label x:Name="lblEmail" Content="Email" Grid.Row="4" Grid.Column="0" FontWeight="Bold" FontSize="14" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtEmail" Grid.Row="4" Grid.Column="0" Height="30" Margin="5,0,5,5" VerticalAlignment="Bottom"/>
 
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="3">
+            <!-- Aanmaken button Verwijderen -->
+            <Button x:Name="btnVerwijderen" Content="Verwijderen" Margin="0,7,5,8"  HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
+                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Click="btnVerwijderen_Click"/>
+
+            <!-- Aanmaken button Toevoegen -->
+            <Button x:Name="btnToevoegen" Content="Toevoegen" Margin="0,7,5,8"  HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
+                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Click="btnToevoegen_Click"/>
+
+            <!-- Aanmaken button Opslaan -->
+            <Button x:Name="btnOpslaan" Content="Opslaan" Margin="0,7,5,8"  HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
+                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Click="btnOpslaan_Click"/>
+
+            <!-- Aanmaken button Annuleren -->
+            <Button x:Name="btnAnnuleren" Content="Annuleren" Margin="0,7,5,8"  HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
+                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Click="btnAnnuleren_Click"/>
+
+        </StackPanel>
     </Grid>
 </Window>
