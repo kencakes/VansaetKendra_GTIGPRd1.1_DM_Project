@@ -21,6 +21,18 @@ namespace VansaetKendra_Gd1._1_DM_Project_DAL
             }
         }
 
+        // Zoekt op ingegeve naam in de achievementslijst, sorteert op naam 
+        public static List<Achievement> OphalenAchievementsViaNaam(string naam)
+        {
+            using (WowheadEntities entities = new WowheadEntities())
+            {
+                return entities.Achievements
+                    .Where(x => x.Naam.Contains(naam))
+                    .OrderBy(x => x.Naam)
+                    .ToList();
+            }
+        }
+
         //public static List<Achievement> OphalenAchievementsViaCategorieID(int categorieID)
         //{
         //    using(WowheadEntities entities = new WowheadEntities())
@@ -110,6 +122,18 @@ namespace VansaetKendra_Gd1._1_DM_Project_DAL
             }
         }
 
+        // Zoekt op ingegeve naam in de reputatielijst, sorteert op naam
+        public static List<Reputatie> OphalenReputatieViaNaam(string naam)
+        {
+            using (WowheadEntities entities = new WowheadEntities())
+            {
+                return entities.Reputaties
+                    .Where(x => x.Naam.Contains(naam))
+                    .OrderBy(x => x.Naam)
+                    .ToList();
+            }
+        }
+
         // Verwijderen reputatie
         public static int VerwijderenReputatie(Reputatie reputatie)
         {
@@ -165,6 +189,7 @@ namespace VansaetKendra_Gd1._1_DM_Project_DAL
         }
 
         // DatabaseOperations GebruikerWindow
+        // Ophalen gebruikers
         public static List<Gebruiker> OphalenGebruikers()
         {
             using(WowheadEntities entities = new WowheadEntities())
@@ -239,6 +264,5 @@ namespace VansaetKendra_Gd1._1_DM_Project_DAL
                     .ToList();
             }
         }
-
     }
 }
