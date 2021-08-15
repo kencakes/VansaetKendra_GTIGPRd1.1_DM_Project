@@ -5,25 +5,46 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VansaetKendra_GTIGPRd1._1_DM_Project_WPF"
         mc:Ignorable="d"
-        Title="AchievementWindow" Height="719" Width="800" Loaded="Window_Loaded">
-    <StackPanel>
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Title="AchievementWindow" Height="900" Width="850" Loaded="Window_Loaded">
+    <Grid>
+        <!-- Aanmaken van rijen -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="39"></RowDefinition>
+            <RowDefinition Height="39"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!-- Aanmaken kolommen -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
         <!-- Aanmaken button om terug te gaan -->
         <Button x:Name="btnTerug" Background="{x:Null}" HorizontalAlignment="Left" BorderBrush="{x:Null}" Click="btnTerug_Click">
-            <Image Source="images/arrow.png" Height="28" Width="28" Margin="5"></Image>
+            <Image Source="images/arrow.png" Height="25" Width="25"></Image>
         </Button>
 
+        <!-- Aanmaken textbox, button en label zoeken -->
+        <Label x:Name="lblZoeken" Content="Naam: " Grid.Row="0" Grid.Column="1" FontWeight="Bold" Margin="75,7,5,5" HorizontalAlignment="Left"/>
+        <TextBox x:Name="txtZoeken" Grid.Row="0" Grid.Column="1" Height="30" Margin="5" Width="170" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+        <Button x:Name="btnZoeken" Content="Zoeken" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="5,5,5,4" Click="btnZoeken_Click"
+                Style="{StaticResource MaterialDesignRaisedButton}" Width="110" ToolTip="Resource name: MaterialDesignRaisedButton"/>
+
         <!-- Aanmaken van DataGrid -->
-        <DataGrid x:Name="datagridAchievements" AutoGenerateColumns="False" IsReadOnly="True" Margin="5" FontSize="15" SelectionChanged="datagridAchievements_SelectionChanged">
-
-            <!-- Font Color / Style of Column Headings -->
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="#0A0A0A"/>
-                    <Setter Property="FontWeight" Value="bold"/>
-                    <Setter Property="Foreground" Value="#ffffff"/>
-                </Style>
-            </DataGrid.Resources>
-
+        <DataGrid x:Name="datagridAchievements" AutoGenerateColumns="False" IsReadOnly="True" Margin="5" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" SelectionChanged="datagridAchievements_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Naam}" Header="Naam" />
                 <DataGridTextColumn Binding="{Binding Omschrijving}" Header="Omschrijving"/>
@@ -32,40 +53,35 @@
         </DataGrid>
 
         <!-- Aanmaken label opties -->
-        <Label x:Name="lblOpties" Content="Opties" FontWeight="Bold" FontSize="14" Margin="1"/>
+        <Label x:Name="lblOpties" Content="Opties" FontWeight="Bold" FontSize="14" Margin="1" Grid.Row="3" Grid.Column="0"/>
 
         <!-- Lijn Opties -->
-        <Separator Name="MySeparator" Height="9" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Black" Margin="6,0,6,6"/>
+        <Separator Name="MySeparator" Height="9" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Background="Black" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Margin="6,0,6,6"/>
 
         <!-- Aanmaken label en textbox Naam -->
-        <Label x:Name="lblNaam" Content="Naam" FontWeight="Bold" FontSize="14" Margin="1,1,1,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtNaam" Height="30" Margin="5,0,5,5" VerticalAlignment="Bottom"/>
+        <Label x:Name="lblNaam" Content="Naam" FontWeight="Bold" FontSize="14" Margin="1,1,1,0" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNaam" Height="30" Margin="5,0,5,5" Grid.Row="4" Grid.Column="0" VerticalAlignment="Bottom"/>
 
         <!-- Aanmaken label en textbox Beschrijving -->
-        <Label x:Name="lblBeschrijving" Content="Beschrijving"  FontWeight="Bold" FontSize="14" Margin="1,1,1,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtBeschrijving"  Height="30" Margin="5,0,5,5"  VerticalAlignment="Bottom"/>
+        <Label x:Name="lblBeschrijving" Content="Beschrijving" FontWeight="Bold" FontSize="14" Margin="1,1,1,0" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtBeschrijving"  Height="30" Margin="5,0,5,5" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom"/>
 
         <!-- Aanmaken label en combobox Categorie -->
-        <Label x:Name="lblCategorie" Content="Categorie"  FontWeight="Bold" FontSize="14" Margin="1,1,1,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cmbCategorie"  Height="30" Margin="5,0,5,5"  VerticalAlignment="Bottom"/>
+        <Label x:Name="lblCategorie" Content="Categorie" FontWeight="Bold" FontSize="14" Margin="1,1,1,0" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cmbCategorie"  Height="30" Margin="5,0,5,5" Grid.Row="4" Grid.Column="1"  VerticalAlignment="Bottom"/>
 
-        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
             <!-- Aanmaken button Verwijderen -->
-            <Button x:Name="btnVerwijderen" Content="Verwijderen" Margin="0,7,5,8"  HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
-                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Click="btnVerwijderen_Click"/>
+            <Button x:Name="btnVerwijderen" Content="Verwijderen" Margin="5" Click="btnVerwijderen_Click"/>
 
             <!-- Aanmaken button Toevoegen -->
-            <Button x:Name="btnToevoegen" Content="Toevoegen" Margin="0,7,5,8"  HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
-                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Click="btnToevoegen_Click"/>
+            <Button x:Name="btnToevoegen" Content="Toevoegen" Margin="5" Click="btnToevoegen_Click"/>
 
             <!-- Aanmaken button Opslaan -->
-            <Button x:Name="btnOpslaan" Content="Opslaan" Margin="0,7,5,8"  HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
-                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Click="btnOpslaan_Click"/>
+            <Button x:Name="btnOpslaan" Content="Opslaan" Margin="5" Click="btnOpslaan_Click"/>
             
             <!-- Aanmaken button Annuleren -->
-            <Button x:Name="btnAnnuleren" Content="Annuleren" Margin="0,7,5,8"  HorizontalAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" 
-                Foreground="White" Background="#0A0A0A" Width="106" Height="36" BorderBrush="{x:Null}" Click="btnAnnuleren_Click"/>
-
+            <Button x:Name="btnAnnuleren" Content="Annuleren" Margin="5" Click="btnAnnuleren_Click"/>
         </StackPanel>
-    </StackPanel>
+    </Grid>
 </Window>

@@ -198,5 +198,10 @@ namespace VansaetKendra_GTIGPRd1._1_DM_Project_WPF
             mWindow.Show();
             this.Close();
         }
+
+        private void btnZoeken_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
