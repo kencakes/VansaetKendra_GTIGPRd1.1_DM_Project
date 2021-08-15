@@ -11,15 +11,15 @@
         <Image Name="picHolder" Source="images/shuttle.png" Width="74" Height="74" Margin="33"/>
 
         <!-- Button Gebruiker -->
-        <Button x:Name="btnGebruikers" Content="Gebruikers" Margin="5" 
-                FontFamily="Arial" FontWeight="Bold" FontSize="16" Foreground="White" Background="#0A0A0A" Width="150" Height="36" BorderBrush="{x:Null}" Click="btnGebruikers_Click"/>
+        <Button x:Name="btnGebruikers" Content="Gebruikers" Margin="5" Click="btnGebruikers_Click" 
+                Style="{StaticResource MaterialDesignRaisedButton}" Width="150" ToolTip="Resource name: MaterialDesignRaisedButton"/>
 
         <!-- Button Reputatie -->
-        <Button x:Name="btnReputatie" Content="Reputatie" Margin="5" 
-                FontFamily="Arial" FontWeight="Bold" FontSize="16" Foreground="White" Background="#0A0A0A" Width="150" Height="36" BorderBrush="{x:Null}" Click="btnReputatie_Click"/>
+        <Button x:Name="btnReputatie" Content="Reputatie" Margin="5" Click="btnReputatie_Click"
+                Style="{StaticResource MaterialDesignRaisedButton}" Width="150" ToolTip="Resource name: MaterialDesignRaisedButton"/>
 
         <!-- Button Achievements -->
-        <Button x:Name="btnAchievements" Content="Achievements" Margin="5" 
-                FontFamily="Arial" FontWeight="Bold" FontSize="16" Foreground="White" Background="#0A0A0A" Width="150" Height="36" BorderBrush="{x:Null}" Click="btnAchievements_Click"/>
+        <Button x:Name="btnAchievements" Content="Achievements" Margin="5" Click="btnAchievements_Click"
+                    Style="{StaticResource MaterialDesignRaisedButton}" Width="150" ToolTip="Resource name: MaterialDesignRaisedButton"/>
     </StackPanel>
 </Window>
