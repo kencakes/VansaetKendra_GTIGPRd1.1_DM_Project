@@ -165,7 +165,7 @@ namespace VansaetKendra_GTIGPRd1._1_DM_Project_WPF
 
         private void btnZoeken_Click(object sender, RoutedEventArgs e)
         {
-
+            datagridReputatie.ItemsSource = DatabaseOperations.OphalenReputatieViaNaam(txtZoeken.Text);
         }
     }
 }

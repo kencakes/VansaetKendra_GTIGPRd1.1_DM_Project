@@ -201,7 +201,7 @@ namespace VansaetKendra_GTIGPRd1._1_DM_Project_WPF
 
         private void btnZoeken_Click(object sender, RoutedEventArgs e)
         {
-
+            datagridAchievements.ItemsSource = DatabaseOperations.OphalenAchievementsViaNaam(txtZoeken.Text);
         }
     }
 }
